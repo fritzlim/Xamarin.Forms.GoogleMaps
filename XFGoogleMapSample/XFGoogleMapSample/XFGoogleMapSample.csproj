@@ -10,6 +10,28 @@
     <Copyright>Copyright © amay077. 2016 - 2019</Copyright>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>rsync -u "Variables_sample.cs" "Variables.cs"</command>
+          <workingdir>${ProjectDir}</workingdir>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>rsync -u "Variables_sample.cs" "Variables.cs"</command>
+          <workingdir>${ProjectDir}</workingdir>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
   <Import Project="$(ProjectDir)XFGoogleMapSample.CopyFile.targets" />
 
   <ItemGroup>
@@ -27,7 +49,8 @@
     <EmbeddedResource Include="marker03.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.616-pre4" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
   </ItemGroup>
 </Project>
